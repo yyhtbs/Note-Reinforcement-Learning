@@ -2,7 +2,7 @@
 ## Problem to be solved
 The Q value in DQN is usually over-estimated. 
 
-![1](./Double-DQN-Problem-Statement.png)
+![1](./Hungyi-Lee-L4-Image/Double-DQN-Problem-Statement.png)
 
 The graph above shows the real Q value (straight lines) and the estimation (noisy curves); red = DQN; blue = Double DQN.
 
@@ -98,7 +98,7 @@ We know during the interactions, the change of $A$ is $A(a| s) = \begin{bmatrix}
 ## Problem to be solved
 The historical data (in the replay buffer) with larger TD errors should receive more attentions.  
 
-![](./Priortized-Reply-TD-Error.png)
+![](./Hungyi-Lee-L4-Image/Priortized-Reply-TD-Error.png)
 
 TD error is the error between the expected Q value and the output Q value from policy network. 
 ## Intuition
@@ -121,7 +121,7 @@ It follows the concept of Model Predictive Control to predict and adjust multi-s
 
 ## Implementation:
 
-![](./Multi-step-Training.png)
+![](./Hungyi-Lee-L4-Image/Multi-step-Training.png)
 
 # Noisy Net
 
@@ -154,7 +154,7 @@ Noise on action means given the same state, the agent may take different actions
 Noise on Q means a consistent action (state-dependent exploration)for a states in the same episode, the agent will have different action preference in different episode to evaluate if the purturbed policy is a better choice.
 
 An example of trainning results are shown below, the left figure is the noise on the action and the right is the noise on the Q network. 
-![](./Noise-Net-Example.png)
+![](./Hungyi-Lee-L4-Image/Noise-Net-Example.png)
 
 # Distributional Q function
 
@@ -164,7 +164,7 @@ Q function is the **expectation** vale of accumulated rewards (reward itself is 
 
 The mean value cannot fully represent a distribution. An example is given below.  
 
-![](Distributional-Q-Function-Different-Distributions.png)
+![](./Hungyi-Lee-L4-Image/Distributional-Q-Function-Different-Distributions.png)
 
 The left is a bell shape distribution of the Q value given a state s, i.e. $Q(s)$. The mean value is 0. The right is a another $Q(s)$ distribution with the mean value equals 0. Obviously they are different. So if the distribution is like the right figure, it means the Q value is unstable given state $s$. For example, it means the state is not a good state for certain applications that requires stability. 
 
@@ -175,7 +175,7 @@ It can mitigate emprical risks. E.g. if an action has a slightly higher mean val
 In this approach, instead of output a Q value for each state, it outputs the histogram of the Q value for a given state $s$ as shown below. The histogram contains more information than the pure mean value. 
 
 
-![](Distributional-Q-Function-Design.png)
+![](./Hungyi-Lee-L4-Image/Distributional-Q-Function-Design.png)
 
 In this figure, each color denotes the histogram of Q when executing an action $a$ at state $s$; each bar denotes when taking this action, the probability of gaining this reward. During testing (interacting with the environment), the strategy is to select the action with the highest mean value. 
 
